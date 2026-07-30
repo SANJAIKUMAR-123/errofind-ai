@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/E.png" type="image/x-icon">
+    <title>ErroFind AI</title>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav id="nav">
+        <div id="logo-section">
+            <img src="images/E.png" alt="Logo" height="80px" width="80px">
+            <h1 id="txt">ErroFind <span class="ai-tag">AI</span></h1>
+        </div>
+        <ul id="list">
+            <li><a href="#hero">About</a></li>
+            <li><a href="#form-container">Translator</a></li>
+            <li><a href="#foot">Contact</a></li>
+        </ul>
+        <button id="themeBtn">🌙</button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <img src="images/logo-removebg-preview.png" alt="Logo" height="200px" width="250px" id="img">
+        <h1 id="text">ErroFind AI</h1>
+        <p>
+            ErroFind AI reads your actual code — the way a code editor would —
+            and uses Claude to explain exactly what's wrong and how to fix it.
+            No fixed error database, no keyword matching.
+        </p>
+    </section>
+
+    <section id="stats">
+        <div class="card">
+            <h2>5</h2>
+            <p>Languages Supported</p>
+        </div>
+        <div class="card">
+            <h2>AI</h2>
+            <p>Powered Analysis</p>
+        </div>
+        <div class="card">
+            <h2 id="searchCount">0</h2>
+            <p>Analyses This Session</p>
+        </div>
+    </section>
+
+    <section id="history-section">
+        <h2>Recent Analyses</h2>
+        <div id="history-box">No analyses yet</div>
+        <button id="clearHistoryBtn">Clear History</button>
+    </section>
+
+    <!-- FORM SECTION -->
+    <section id="form-container">
+        <div id="form">
+            <h1>AI Code Error Analyzer</h1>
+            <form onsubmit="return false;">
+                <label>Paste your code</label>
+                <textarea
+                    id="val"
+                    placeholder="Paste the actual code that's failing, e.g.
+
+function greet(user) {
+  console.log(user.name.toUpperCase());
+}
+greet();"
+                ></textarea>
+                <label>Select Language</label>
+                <select id="language">
+                    <option value="">Choose Language</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="Java">Java</option>
+                    <option value="C">C</option>
+                    <option value="CPP">C++</option>
+                </select>
+                <button type="button" id="analyzeBtn" onclick="analyze()">
+                    <span id="btnLabel">Analyze with AI</span>
+                </button>
+                <div id="ans"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="foot">
+        <h1>Contact</h1>
+        <p>Email: sanjaikumarcse23@gmail.com</p>
+        <p>Mobile: +91 7397136485</p>
+        <p>&copy; Developed by Sanjai Kumar</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
