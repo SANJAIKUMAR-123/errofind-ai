@@ -6,7 +6,7 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const MODEL = process.env.GEMINI_MODEL || "gemini-3.1-flash-lite";
+const MODEL = process.env.GEMINI_MODEL || "gemini-2.0-flash-lite";
 
 if (!GEMINI_API_KEY) {
   console.warn(

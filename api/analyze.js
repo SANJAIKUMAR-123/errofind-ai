@@ -1,5 +1,5 @@
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const MODEL = process.env.GEMINI_MODEL || "gemini-3.1-flash-lite";
+const MODEL = process.env.GEMINI_MODEL || "gemini-2.0-flash-lite";
 
 function buildPrompt(language, code, execResult) {
   let execBlock = "No local execution was performed for this language.";
