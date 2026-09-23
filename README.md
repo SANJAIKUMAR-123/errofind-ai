@@ -7,7 +7,7 @@ Paste real code, get a real AI-driven diagnosis — no static `errorDatabase` lo
 | Before | Now |
 |---|---|
 | User pastes error *text*, app string-matches it against a hardcoded `errorDatabase` object | User pastes actual **code**; for JavaScript it's *executed* in a sandboxed Web Worker to catch the real thrown error |
-| Only errors already listed in `errors.js` could be recognized | Claude analyzes the code + real execution result and explains *any* error, seen before or not |
+| Only errors already listed in `errors.js` could be recognized | Gemini analyzes the code + real execution result and explains *any* error, seen before or not |
 | Explanations were fixed, canned text | Explanations, fixes, and corrected examples are generated fresh per request |
 | Everything ran client-side, `errors.js` shipped to the browser | A small Express backend proxies the AI call so your API key never reaches the browser |
 
@@ -36,7 +36,7 @@ Visit `http://localhost:3000`.
 
 This is a normal Node/Express app — deploy it anywhere that supports Node (Render, Railway, Fly.io, a VPS, etc.). Just make sure:
 
-- `ANTHROPIC_API_KEY` is set as an environment variable on the host (never commit `.env`)
+- `GEMINI_API_KEY` is set as an environment variable on the host (never commit `.env`)
 - The platform runs `npm install && npm start`
 
 ## Notes / things to harden before production
@@ -44,7 +44,7 @@ This is a normal Node/Express app — deploy it anywhere that supports Node (Ren
 - **Rate limiting**: add something like `express-rate-limit` on `/api/analyze` — the Gemini free tier has per-minute/per-day request caps, and this stops one user from burning through them.
 - **Input size limits**: the server already caps request bodies at 200kb; you may want to also cap pasted code length in the frontend.
 - **Sandboxing beyond JS**: if you later want to *actually run* Python/Java/C/C++ (not just have the AI read it), that requires a real server-side sandbox (e.g. Docker containers, Judge0, Piston) — running untrusted code needs process isolation, which a browser Worker can't provide for non-JS languages.
-- **Model choice**: `GEMINI_MODEL` defaults to `gemini-2.5-flash`, a free-tier model. Check [Google's pricing page](https://ai.google.dev/pricing) for which models currently have a free tier, since Google periodically changes this per model.
+- **Model choice**: `GEMINI_MODEL` defaults to `gemini-3.5-flash_lite`, a free-tier model. Check [Google's pricing page](https://ai.google.dev/pricing) for which models currently have a free tier, since Google periodically changes this per model.
 - **Free tier limits**: the free tier is rate-limited (requests per minute/day), not unlimited. If you hit `429` errors under real traffic, either add backoff/retry logic or move to a paid tier.
 
 ## File structure
