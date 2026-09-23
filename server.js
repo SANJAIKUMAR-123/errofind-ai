@@ -14,7 +14,7 @@ const GEMINI_API_KEY =
 
 const MODEL =
     process.env.GEMINI_MODEL ||
-    "gemini-2.5-flash";
+    "gemini-3.5-flash-lite";
 
 
 app.use(cors());
